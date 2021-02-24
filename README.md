@@ -4,5 +4,5 @@
 ## playwrightのインストール
 ``npm i playwright --save``
 
-##playwrightの実行
+## playwrightの実行
 ``node .``

@@ -12,8 +12,8 @@ const env = process.env;
   });
   const page = await context.newPage();
   await page.goto(env.URL);
-  await page.type('input[id="user_name"]', env.USER);
-  await page.type('input[id="user_password"]', env.PASS);
+  await page.type('input[id="user_name"]', env.USERNAME_APP);
+  await page.type('input[id="user_password"]', env.PASSWORD_APP);
 
   await Promise.all([
     page.waitForNavigation(),

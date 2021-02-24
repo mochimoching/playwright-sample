@@ -4,12 +4,16 @@ const env = process.env;
 
 (async () => {
   const browser = await chromium.launch({headless:false});
-  const context = await browser.newContext();
+  const context = await browser.newContext({
+    httpCredentials : {
+      username : env.USERNAME_PROXY,
+      password : env.PASSWORD_PROXY
+    }
+  });
   const page = await context.newPage();
- 
   await page.goto(env.URL);
-  await page.type('input[id="user_name"]', env.USERNAME); 
-  await page.type('input[id="user_password"]', env.PASSWORD); 
+  await page.type('input[id="user_name"]', env.USER);
+  await page.type('input[id="user_password"]', env.PASS);
 
   await Promise.all([
     page.waitForNavigation(),
@@ -32,6 +36,6 @@ const env = process.env;
     page.waitForNavigation(),
     aTagAll[indicator].click()
   ]);
- 
+
 //  await browser.close();
 })();

@@ -22,19 +22,19 @@ const env = process.env;
 
   const selector = 'table > tbody > tr > td > div > table > tbody > tr > td > a';
   const aTagAll = await page.$$(selector);
-  let tagText = [];
-  let indicator = "";
-  for (let i = 0; i < aTagAll.length; i++) {
-      tagText.push(await (await aTagAll[i].getProperty('textContent')).jsonValue())
-      if(tagText[i].match(/Bizca/)){
-          indicator = i;
-          break;
-      }
+  let aTag = null;
+  let tagText = null;
+
+  for (aTag of aTagAll) {
+    tagText = await (await aTag.getProperty('textContent')).jsonValue();
+    if(tagText.match(/Bizca/)) {
+      break;
+    }
   }
 
   await Promise.all([
     page.waitForNavigation(),
-    aTagAll[indicator].click()
+    aTag.click()
   ]);
 
 //  await browser.close();

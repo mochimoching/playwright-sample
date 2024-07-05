@@ -1,13 +1,12 @@
 {
-  "name": "playwright-sample",
+  "name": "brave-rewards",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "playwright": "^1.8.1"
+    "puppeteer": "^22.12.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
